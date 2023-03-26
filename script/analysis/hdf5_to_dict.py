@@ -477,6 +477,7 @@ def load_diag(path, hdr = None, nulegacy = False, timers = True):
   # load header
   if hdr is None:
     dfiles = sorted(glob.glob(os.path.join(path,'dump_*.h5')))
+    if len(dfiles) < 1: dfiles = sorted(glob.glob(os.path.join(path,'dump*.h5')))
     if len(dfiles) < 1:
       import util
       util.warn("Cannot read header. No dumps available.")

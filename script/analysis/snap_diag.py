@@ -4,8 +4,8 @@ import sys
 import hdf5_to_dict as io
 
 if len(sys.argv) != 2:
-  print 'ERROR format is'
-  print '  python snap_diag.py [folder]'
+  print('ERROR format is')
+  print('  python snap_diag.py [folder]')
 
 folder = sys.argv[1]
 

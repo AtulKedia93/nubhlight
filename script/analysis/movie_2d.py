@@ -36,7 +36,7 @@ geom = io.load_geom(hdr)
 
 def plot(args):
   n = args
-  print '%08d / ' % (n+1) + '%08d' % len(files) 
+  print('%08d / ' % (n+1) + '%08d' % len(files)) 
   dump = io.load_dump(files[n], geom)
   fig = plt.figure(figsize=(FIGX, FIGY))
   
@@ -61,12 +61,12 @@ def plot(args):
   #   vmin=-4, vmax=0, label='RHO')
   ax.set_xlim([0, SIZE]); ax.set_ylim([-SIZE, SIZE])
   
-  ax = plt.subplot(2,2,4)
-  bplt.plot_xz(ax, geom, np.log10(dump['TpTe']), dump, 
-    vmin=-3, vmax = 3, label='TpTe', cmap='RdBu_r')
+  #ax = plt.subplot(2,2,4)
+  #bplt.plot_xz(ax, geom, np.log10(dump['TpTe']), dump, 
+  #  vmin=-3, vmax = 3, label='TpTe', cmap='RdBu_r')
   #bplt.plot_xy(ax, geom, np.log10(dump['Thetae']), dump,
   #   vmin=-2, vmax=2, label='Thetae', cmap='RdBu_r')
-  ax.set_xlim([0, SIZE]); ax.set_ylim([-SIZE, SIZE])
+  #ax.set_xlim([0, SIZE]); ax.set_ylim([-SIZE, SIZE])
 
   #ax.pcolormesh(dump['X1'][:,:,0], dump['X2'][:,:,0], dump['RHO'][:,:,0])
   plt.savefig(os.path.join(FRAMEDIR, 'frame_%08d.png' % n), 
@@ -78,7 +78,7 @@ import signal
 import psutil
 
 #nthreads = psutil.cpu_count(logical=False)
-print psutil.cpu_count(logical=False)
+print(psutil.cpu_count(logical=False))
 nthreads = 10
 
 original_sigint_handler = signal.signal(signal.SIGINT, signal.SIG_IGN)
@@ -88,7 +88,7 @@ try:
   res = pool.map_async(plot, range(len(files)))
   res.get(720000)
 except KeyboardInterrupt:
-  print 'Caught interrupt!'
+  print('Caught interrupt!')
   pool.terminate()
 else:
   pool.close()
